@@ -10,11 +10,13 @@
 		2B92E365FC488085D47BE896 /* Pods_CountryInfoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73B757330AB023DF7EBFDA23 /* Pods_CountryInfoTests.framework */; };
 		8713523C1D780B9FB002B372 /* Pods_CountryInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591003B6E35C514A254C8E5 /* Pods_CountryInfo.framework */; };
 		B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */; };
-		B56AFBD822D4A6FE0004A68F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBD722D4A6FE0004A68F /* ViewController.swift */; };
 		B56AFBDB22D4A6FE0004A68F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56AFBD922D4A6FE0004A68F /* Main.storyboard */; };
 		B56AFBDD22D4A6FF0004A68F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56AFBDC22D4A6FF0004A68F /* Assets.xcassets */; };
 		B56AFBE022D4A6FF0004A68F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56AFBDE22D4A6FF0004A68F /* LaunchScreen.storyboard */; };
 		B56AFBEB22D4A6FF0004A68F /* CountryInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBEA22D4A6FF0004A68F /* CountryInfoTests.swift */; };
+		B56AFBFA22D4B4B40004A68F /* CICountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBF922D4B4B40004A68F /* CICountryInfoViewController.swift */; };
+		B56AFBFC22D4BA380004A68F /* CICountryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBFB22D4BA380004A68F /* CICountryDataModel.swift */; };
+		B56C036222D4D23A00320636 /* CINetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C036122D4D23A00320636 /* CINetworkHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,6 @@
 		93CE029C9288182A62DA6361 /* Pods-CountryInfoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryInfoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryInfoTests/Pods-CountryInfoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B56AFBD222D4A6FE0004A68F /* CountryInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B56AFBD722D4A6FE0004A68F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B56AFBDA22D4A6FE0004A68F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B56AFBDC22D4A6FF0004A68F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B56AFBDF22D4A6FF0004A68F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +44,9 @@
 		B56AFBE622D4A6FF0004A68F /* CountryInfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryInfoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56AFBEA22D4A6FF0004A68F /* CountryInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoTests.swift; sourceTree = "<group>"; };
 		B56AFBEC22D4A6FF0004A68F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B56AFBF922D4B4B40004A68F /* CICountryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CICountryInfoViewController.swift; sourceTree = "<group>"; };
+		B56AFBFB22D4BA380004A68F /* CICountryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICountryDataModel.swift; sourceTree = "<group>"; };
+		B56C036122D4D23A00320636 /* CINetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CINetworkHandler.swift; sourceTree = "<group>"; };
 		D3A35F6B73DDE33AFB8DEA93 /* Pods-CountryInfoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryInfoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryInfoTests/Pods-CountryInfoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */,
-				B56AFBD722D4A6FE0004A68F /* ViewController.swift */,
+				B56AFBF522D4B4B40004A68F /* CountryInfoController */,
+				B56C036022D4D0F100320636 /* WebServices */,
 				B56AFBD922D4A6FE0004A68F /* Main.storyboard */,
 				B56AFBDC22D4A6FF0004A68F /* Assets.xcassets */,
 				B56AFBDE22D4A6FF0004A68F /* LaunchScreen.storyboard */,
@@ -126,6 +131,47 @@
 				B56AFBEC22D4A6FF0004A68F /* Info.plist */,
 			);
 			path = CountryInfoTests;
+			sourceTree = "<group>";
+		};
+		B56AFBF522D4B4B40004A68F /* CountryInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				B56AFBF722D4B4B40004A68F /* Model */,
+				B56AFBF822D4B4B40004A68F /* View */,
+				B56AFBF622D4B4B40004A68F /* ViewModel */,
+				B56AFBF922D4B4B40004A68F /* CICountryInfoViewController.swift */,
+			);
+			path = CountryInfoController;
+			sourceTree = "<group>";
+		};
+		B56AFBF622D4B4B40004A68F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B56AFBF722D4B4B40004A68F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B56AFBFB22D4BA380004A68F /* CICountryDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B56AFBF822D4B4B40004A68F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B56C036022D4D0F100320636 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				B56C036122D4D23A00320636 /* CINetworkHandler.swift */,
+			);
+			path = WebServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,8 +347,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B56AFBD822D4A6FE0004A68F /* ViewController.swift in Sources */,
+				B56AFBFC22D4BA380004A68F /* CICountryDataModel.swift in Sources */,
+				B56C036222D4D23A00320636 /* CINetworkHandler.swift in Sources */,
 				B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */,
+				B56AFBFA22D4B4B40004A68F /* CICountryInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

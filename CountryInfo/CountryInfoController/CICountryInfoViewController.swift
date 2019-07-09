@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CICountryInfoViewController.swift
 //  CountryInfo
 //
 //  Created by Chandan Singh on 09/07/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CICountryInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
