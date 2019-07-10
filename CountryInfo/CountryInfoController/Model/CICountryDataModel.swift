@@ -8,6 +8,18 @@
 
 import Foundation
 
-struct CountryData {
+struct Response: Codable {
+    let title: String?
+    let countryData: [CountryData]?
     
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case countryData = "rows"
+    }
+}
+
+struct CountryData: Codable {
+    let title: String?
+    let description: String?
+    let imageHref: String?
 }
