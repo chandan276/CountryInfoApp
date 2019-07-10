@@ -19,9 +19,22 @@ class CICountryInfoViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.title = "Country Info"
+        self.tableView.estimatedRowHeight = 100.0
+        self.tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
         
         configureRefreshControl()
+        getCountryData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: PullToRefresh Methods
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Country Data
         getCountryData()
     }
     
@@ -32,6 +45,7 @@ class CICountryInfoViewController: UITableViewController {
         tableView.refreshControl = refreshControl
     }
     
+    //MARK: Get Data from Server
     func getCountryData() {
         viewModel.getCountryData { [weak self] (countryInfoViewModel) in
             if let self = self {
@@ -42,28 +56,29 @@ class CICountryInfoViewController: UITableViewController {
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @objc private func refreshData(_ sender: Any) {
-        // Fetch Country Data
-        getCountryData()
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CountryInfoCell
-        cell.viewModel = viewModel.infoCellViewModel(index: indexPath.row)
-        return cell
-    }
+}
+
+extension CICountryInfoViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.rowsCount
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CountryInfoCell
+        cell.viewModel = viewModel.infoCellViewModel(index: indexPath.row)
+        cell.selectionStyle = .none
+        return cell
     }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if tableView.rowHeight < 60.0 {
+//            return 90.0
+//        }
+//        return UITableView.automaticDimension
+//    }
 }

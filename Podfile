@@ -8,6 +8,8 @@ target 'CountryInfo' do
   # Pods for CountryInfo
   # Network
   pod 'Alamofire'
+  # Image Download
+  pod 'SDWebImage', '~> 4.0'
 
   target 'CountryInfoTests' do
     inherit! :search_paths

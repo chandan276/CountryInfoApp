@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CountryInfoCell : UITableViewCell {
     
     public var viewModel: CIInfoCellViewModel? {
         didSet {
+            let imageUrl = URL(string: viewModel?.imageUrl ?? "")
+            self.countryInfoImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "PlaceholderImage"), options: SDWebImageOptions.refreshCached) { (image, error, cacheType, url) in
+                
+                //self.countryInfoImageView.image = image
+            }
             self.countryInfoTitleLabel.text = viewModel?.title
             self.countryInfoDescriptionLabel.text = viewModel?.description
         }
@@ -26,7 +32,7 @@ class CountryInfoCell : UITableViewCell {
     
     private let countryInfoTitleLabel : UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .darkGray
+        titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         titleLabel.textAlignment = .left
         return titleLabel
@@ -34,8 +40,8 @@ class CountryInfoCell : UITableViewCell {
     
     private let countryInfoDescriptionLabel : UILabel = {
         let desriptionLabel = UILabel()
-        desriptionLabel.textColor = .black
-        desriptionLabel.font = UIFont.systemFont(ofSize: 16)
+        desriptionLabel.textColor = .darkGray
+        desriptionLabel.font = UIFont.systemFont(ofSize: 14)
         desriptionLabel.textAlignment = .left
         desriptionLabel.numberOfLines = 0
         return desriptionLabel
@@ -47,9 +53,9 @@ class CountryInfoCell : UITableViewCell {
         addSubview(countryInfoTitleLabel)
         addSubview(countryInfoDescriptionLabel)
         
-        countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 90, height: 0, enableInsets: false)
-        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 0, enableInsets: false)
-        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 0, enableInsets: false)
+        countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 70, height: 70, enableInsets: false)
+        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
+        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
