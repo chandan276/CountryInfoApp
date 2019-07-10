@@ -19,6 +19,8 @@
 		B56C036222D4D23A00320636 /* CINetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C036122D4D23A00320636 /* CINetworkHandler.swift */; };
 		B5787F0C22D5628900A94FF1 /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5787F0B22D5628900A94FF1 /* UIView+Anchor.swift */; };
 		B5787F0E22D5635400A94FF1 /* CICountryInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5787F0D22D5635400A94FF1 /* CICountryInfoTableCell.swift */; };
+		B5D3D33C22D59E5900E983C7 /* CICountryInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3D33B22D59E5900E983C7 /* CICountryInfoViewModel.swift */; };
+		B5D3D33E22D5AF2900E983C7 /* CIInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3D33D22D5AF2900E983C7 /* CIInfoCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		B56C036122D4D23A00320636 /* CINetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CINetworkHandler.swift; sourceTree = "<group>"; };
 		B5787F0B22D5628900A94FF1 /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		B5787F0D22D5635400A94FF1 /* CICountryInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICountryInfoTableCell.swift; sourceTree = "<group>"; };
+		B5D3D33B22D59E5900E983C7 /* CICountryInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICountryInfoViewModel.swift; sourceTree = "<group>"; };
+		B5D3D33D22D5AF2900E983C7 /* CIInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIInfoCellViewModel.swift; sourceTree = "<group>"; };
 		D3A35F6B73DDE33AFB8DEA93 /* Pods-CountryInfoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryInfoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryInfoTests/Pods-CountryInfoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +156,8 @@
 		B56AFBF622D4B4B40004A68F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5D3D33B22D59E5900E983C7 /* CICountryInfoViewModel.swift */,
+				B5D3D33D22D5AF2900E983C7 /* CIInfoCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -361,7 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D3D33E22D5AF2900E983C7 /* CIInfoCellViewModel.swift in Sources */,
 				B56AFBFC22D4BA380004A68F /* CICountryDataModel.swift in Sources */,
+				B5D3D33C22D59E5900E983C7 /* CICountryInfoViewModel.swift in Sources */,
 				B5787F0E22D5635400A94FF1 /* CICountryInfoTableCell.swift in Sources */,
 				B56C036222D4D23A00320636 /* CINetworkHandler.swift in Sources */,
 				B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */,

@@ -10,27 +10,37 @@ import UIKit
 
 class CICountryInfoViewController: UITableViewController {
 
-    let cellId = "countryTableCellId"
-    //var products : [Product]  = [Product]()
+    fileprivate let cellId = "countryTableCellId"
+    fileprivate var viewModel = CICountryInfoViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        CINetworkHandler.getCountryData("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json", success: { (jsonData) in
-            do {
-                let decoder = JSONDecoder()
-                let gitData = try decoder.decode(Response.self, from: jsonData as! Data)
-            } catch {
-                
-            }
-        }) { (Error) in
-            
-        }
+        self.title = "Country Info"
+        tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
         
-        createProductArray()
-        tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
+        configureRefreshControl()
+        getCountryData()
+    }
+    
+    func configureRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Country Data ...")
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    func getCountryData() {
+        viewModel.getCountryData { [weak self] (countryInfoViewModel) in
+            if let self = self {
+                self.viewModel = countryInfoViewModel
+                self.title = self.viewModel.screenTitle
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,26 +48,22 @@ class CICountryInfoViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Country Data
+        getCountryData()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
-//        let currentLastItem = products[indexPath.row]
-//        cell.product = currentLastItem
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CountryInfoCell
+        cell.viewModel = viewModel.infoCellViewModel(index: indexPath.row)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3//products.count
+        return viewModel.rowsCount
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
-    func createProductArray() {
-//        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "glasses") , productDesc: "This is best Glasses I've ever seen"))
-//        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "desert") , productDesc: "This is so yummy"))
-//        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "cameralens"), productDesc: "I wish I had this camera lens"))
-    }
 }
-

@@ -33,11 +33,12 @@ class CINetworkHandler: NSObject {
                 if let value = String(data: d, encoding: String.Encoding.ascii) {
                     
                     if let jsonData = value.data(using: String.Encoding.utf8) {
+                        success(jsonData)
                         do {
                             //let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
                             
                             
-                            success(jsonData)
+                            
 //                            if let arr = json["rows"] as? [[String: Any]] {
 //                                debugPrint(arr)
 //                            }
@@ -45,6 +46,8 @@ class CINetworkHandler: NSObject {
                             NSLog("ERROR \(error.localizedDescription)")
                             failure(error)
                         }
+                    } else {
+                        
                     }
                 }
             }
