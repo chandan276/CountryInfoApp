@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B92E365FC488085D47BE896 /* Pods_CountryInfoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73B757330AB023DF7EBFDA23 /* Pods_CountryInfoTests.framework */; };
 		8713523C1D780B9FB002B372 /* Pods_CountryInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5591003B6E35C514A254C8E5 /* Pods_CountryInfo.framework */; };
+		B5071AAF22D6F4680025EA70 /* CIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071AAE22D6F4680025EA70 /* CIUtils.swift */; };
 		B557797E22D624FE00CC99BC /* CIAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557797D22D624FE00CC99BC /* CIAlertPresenter.swift */; };
 		B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */; };
 		B56AFBDB22D4A6FE0004A68F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56AFBD922D4A6FE0004A68F /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		67D1BFADC6A0D4D9CEACE459 /* Pods-CountryInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryInfo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryInfo/Pods-CountryInfo.release.xcconfig"; sourceTree = "<group>"; };
 		73B757330AB023DF7EBFDA23 /* Pods_CountryInfoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryInfoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CE029C9288182A62DA6361 /* Pods-CountryInfoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryInfoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryInfoTests/Pods-CountryInfoTests.release.xcconfig"; sourceTree = "<group>"; };
+		B5071AAE22D6F4680025EA70 /* CIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIUtils.swift; sourceTree = "<group>"; };
 		B557797D22D624FE00CC99BC /* CIAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIAlertPresenter.swift; sourceTree = "<group>"; };
 		B56AFBD222D4A6FE0004A68F /* CountryInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B557797D22D624FE00CC99BC /* CIAlertPresenter.swift */,
+				B5071AAE22D6F4680025EA70 /* CIUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */,
 				B56AFBFA22D4B4B40004A68F /* CICountryInfoViewController.swift in Sources */,
 				B5787F0C22D5628900A94FF1 /* UIView+Anchor.swift in Sources */,
+				B5071AAF22D6F4680025EA70 /* CIUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
