@@ -14,6 +14,9 @@
 		B5071ADC22D701930025EA70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5071ADE22D701930025EA70 /* Localizable.strings */; };
 		B5071AE022D7059E0025EA70 /* CIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071ADF22D7059E0025EA70 /* CIConstants.swift */; };
 		B5071AE222D7132C0025EA70 /* CIConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071AE122D7132C0025EA70 /* CIConnectionManager.swift */; };
+		B5071AE422D733C50025EA70 /* CITableViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071AE322D733C50025EA70 /* CITableViewContainer.swift */; };
+		B5071AE622D73DAC0025EA70 /* CICollectionViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071AE522D73DAC0025EA70 /* CICollectionViewContainer.swift */; };
+		B5071AE822D73DC60025EA70 /* CICountryInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5071AE722D73DC60025EA70 /* CICountryInfoCollectionCell.swift */; };
 		B557797E22D624FE00CC99BC /* CIAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557797D22D624FE00CC99BC /* CIAlertPresenter.swift */; };
 		B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */; };
 		B56AFBDB22D4A6FE0004A68F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56AFBD922D4A6FE0004A68F /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 		B5071ADD22D701930025EA70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5071ADF22D7059E0025EA70 /* CIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIConstants.swift; sourceTree = "<group>"; };
 		B5071AE122D7132C0025EA70 /* CIConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIConnectionManager.swift; sourceTree = "<group>"; };
+		B5071AE322D733C50025EA70 /* CITableViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CITableViewContainer.swift; sourceTree = "<group>"; };
+		B5071AE522D73DAC0025EA70 /* CICollectionViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICollectionViewContainer.swift; sourceTree = "<group>"; };
+		B5071AE722D73DC60025EA70 /* CICountryInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICountryInfoCollectionCell.swift; sourceTree = "<group>"; };
 		B557797D22D624FE00CC99BC /* CIAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIAlertPresenter.swift; sourceTree = "<group>"; };
 		B56AFBD222D4A6FE0004A68F /* CountryInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56AFBD522D4A6FE0004A68F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,7 +212,10 @@
 		B56AFBF822D4B4B40004A68F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5071AE322D733C50025EA70 /* CITableViewContainer.swift */,
 				B5787F0D22D5635400A94FF1 /* CICountryInfoTableCell.swift */,
+				B5071AE522D73DAC0025EA70 /* CICollectionViewContainer.swift */,
+				B5071AE722D73DC60025EA70 /* CICountryInfoCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -407,7 +416,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B557797E22D624FE00CC99BC /* CIAlertPresenter.swift in Sources */,
+				B5071AE422D733C50025EA70 /* CITableViewContainer.swift in Sources */,
 				B5071AE022D7059E0025EA70 /* CIConstants.swift in Sources */,
+				B5071AE622D73DAC0025EA70 /* CICollectionViewContainer.swift in Sources */,
 				B5D3D33E22D5AF2900E983C7 /* CIInfoCellViewModel.swift in Sources */,
 				B56AFBFC22D4BA380004A68F /* CICountryDataModel.swift in Sources */,
 				B5D3D33C22D59E5900E983C7 /* CICountryInfoViewModel.swift in Sources */,
@@ -416,6 +427,7 @@
 				B5071AE222D7132C0025EA70 /* CIConnectionManager.swift in Sources */,
 				B5071AD922D7007F0025EA70 /* CIStringConstants.swift in Sources */,
 				B56AFBD622D4A6FE0004A68F /* AppDelegate.swift in Sources */,
+				B5071AE822D73DC60025EA70 /* CICountryInfoCollectionCell.swift in Sources */,
 				B56AFBFA22D4B4B40004A68F /* CICountryInfoViewController.swift in Sources */,
 				B5787F0C22D5628900A94FF1 /* UIView+Anchor.swift in Sources */,
 				B5071AAF22D6F4680025EA70 /* CIUtils.swift in Sources */,

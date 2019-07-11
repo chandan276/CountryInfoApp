@@ -23,6 +23,7 @@ struct Constants {
         struct Colors {
             static let cellTitleColor = UIColor.black
             static let cellDescriptionColor = UIColor.darkGray
+            static let collectionViewBackgroundColor = UIColor.white
         }
         
         // Home Screen Texts Font
@@ -40,5 +41,6 @@ struct Constants {
     //Cells used in the App
     struct CellIdentifiers {
         static let homeScreenTableCellId = "countryTableCellId"
+        static let homeScreenCollectionCellId = "countryCollectionCellId"
     }
 }

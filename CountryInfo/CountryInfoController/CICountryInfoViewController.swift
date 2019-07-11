@@ -8,28 +8,19 @@
 
 import UIKit
 
-class CICountryInfoViewController: UITableViewController {
+class CICountryInfoViewController: UIViewController {
 
-    fileprivate let cellId = Constants.CellIdentifiers.homeScreenTableCellId
+    fileprivate var tableContainerView: TableViewContainer?
+    fileprivate var collectionContainerView: CollectionViewContainer?
     fileprivate var viewModel = CICountryInfoViewModel()
-    
-    private let minimumRowHeight: CGFloat = 90.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = kDefaultHomePageTitle
         
-        //Check the User device type
-        if CIUtils.getCurrentDevice() == .iPhone {
-            //Configure TableView for iPhone
-            setupTableView()
-        } else {
-            //Configure CollectionView for iPad
-        }
-        
-        //Add Pull to refresh control
-        configureRefreshControl()
+        //Load initial View
+        self.setupView()
         
         //Get Data from server
         getCountryData()
@@ -48,29 +39,50 @@ class CICountryInfoViewController: UITableViewController {
     }
     
     //MARK: UI setup method
-    func setupTableView()  {
-        self.tableView.estimatedRowHeight = 90.0
-        self.tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
-    }
-    
-    //MARK: PullToRefresh Methods
-    @objc private func refreshData(_ sender: Any) {
-        // Fetch Country Data on Refresh
-        getCountryData()
-    }
-    
-    func configureRefreshControl() {
-        //Create instance of RefreshControl and add it to UI
-        let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: kPullToRefreshText)
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        //Check the device type and add the refresh control to available UI
+    func setupView() {
+        //Check the User device type
         if CIUtils.getCurrentDevice() == .iPhone {
-            tableView.refreshControl = refreshControl
+            //Configure TableView for iPhone
+            setupTableContainerView()
         } else {
+            //Configure CollectionView for iPad
+            setupCollectionContainerView()
+        }
+    }
+    
+    func setupTableContainerView() {
+        tableContainerView = TableViewContainer(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        
+        if let tableContainerView = tableContainerView {
+            tableContainerView.delegate = self
+            self.view.addSubview(tableContainerView)
             
+            tableContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
+            tableContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
+            tableContainerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0.0).isActive = true
+            tableContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+        }
+    }
+    
+    func setupCollectionContainerView() {
+        collectionContainerView = CollectionViewContainer(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        
+        if let collectionContainerView = collectionContainerView {
+            collectionContainerView.delegate = self
+            self.view.addSubview(collectionContainerView)
+            
+            collectionContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
+            collectionContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
+            collectionContainerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0.0).isActive = true
+            collectionContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+        }
+    }
+    
+    func loadRespectiveViewModel() {
+        if CIUtils.getCurrentDevice() == .iPhone {
+            self.tableContainerView?.viewModel = viewModel
+        } else {
+            self.collectionContainerView?.viewModel = viewModel
         }
     }
     
@@ -84,9 +96,8 @@ class CICountryInfoViewController: UITableViewController {
                 } else {
                     self.viewModel = countryInfoViewModel
                     self.title = self.viewModel.screenTitle
-                    self.tableView.reloadData()
                 }
-                self.tableView.refreshControl?.endRefreshing()
+                self.loadRespectiveViewModel()
             }
         }
     }
@@ -96,28 +107,9 @@ class CICountryInfoViewController: UITableViewController {
     }
 }
 
-extension CICountryInfoViewController {
+extension CICountryInfoViewController: RefreshDataProtocol {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rowsCount
+    func refreshCountryData() {
+        self.getCountryData()
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CountryInfoCell
-        
-        //Pass on the viewModel to cell and it will be taken care there.
-        cell.viewModel = viewModel.infoCellViewModel(index: indexPath.row)
-        
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-        //return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
-    }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
-//    }
 }
