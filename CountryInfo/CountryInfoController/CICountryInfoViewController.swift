@@ -34,6 +34,7 @@ class CICountryInfoViewController: UITableViewController {
         //Get Data from server
         getCountryData()
         
+        //Check the network and show error when unreachable
         ConnectionManager.sharedInstance.reachability.whenUnreachable = { [weak self] reachability in
             if let self = self {
                 self.showOfflineAlert()

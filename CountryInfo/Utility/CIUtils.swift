@@ -15,6 +15,7 @@ enum UserDeviceType: String {
 
 class CIUtils {
     
+    //Returns the User device type
     static func getCurrentDevice() -> UserDeviceType {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .iPhone

@@ -15,8 +15,10 @@ class CINetworkHandler: NSObject {
         URLSession.shared.dataTask(with: URL(string: strURL)!) { (data, res, err) in
             
             if let d = data {
+                //Returns a String initialized by converting given data into Unicode characters using a ASCII encoding.
                 if let value = String(data: d, encoding: String.Encoding.ascii) {
                     
+                    //Returns a Data containing a representation of the String encoded using a UTF8 encoding.
                     if let jsonData = value.data(using: String.Encoding.utf8) {
                         success(jsonData)
                     } else {

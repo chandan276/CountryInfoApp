@@ -16,14 +16,17 @@ class CIInfoCellViewModel {
         self.countryData = data
     }
     
+    //Title of the cell
     var title: String {
         return countryData.title ?? kTitleUnavailableText
     }
     
+    //Description of the cell
     var description: String {
         return countryData.description ?? kDescriptionUnavailableText
     }
     
+    //Imgage url to fetch image for the cell
     var imageUrl: String {
         return countryData.imageHref ?? ""
     }

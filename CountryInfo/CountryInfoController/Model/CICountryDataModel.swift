@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Response Data Model
 struct Response: Codable {
     let title: String?
     let countryData: [CountryData]?
@@ -18,6 +19,7 @@ struct Response: Codable {
     }
 }
 
+//Data Model for Each Row
 struct CountryData: Codable {
     let title: String?
     let description: String?
