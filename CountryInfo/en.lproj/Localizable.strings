@@ -15,4 +15,5 @@
 // Network String Constants
 "NETWORK_ERROR_TEXT" = "Something has gone wrong. Please try again later.";
 "ALERT_OK_TEXT" = "Ok";
+"OFFLINE_ERROR_MESSAGE" = "You seems to be offline, please connect to the internet and try again";
 

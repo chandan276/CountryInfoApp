@@ -23,6 +23,8 @@ class CINetworkHandler: NSObject {
                         failure(err!)
                     }
                 }
+            } else {
+                failure(err!)
             }
             }.resume()
     }

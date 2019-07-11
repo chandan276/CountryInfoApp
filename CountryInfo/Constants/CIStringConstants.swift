@@ -17,3 +17,4 @@ let kPullToRefreshText = NSLocalizedString("PULL_TO_REFRESH_TEXT", comment: "")
 // Network String Constants
 let kNetworkError = NSLocalizedString("NETWORK_ERROR_TEXT", comment: "")
 let kAlertOkButtonText = NSLocalizedString("ALERT_OK_TEXT", comment: "")
+let kOfflineMessage = NSLocalizedString("OFFLINE_ERROR_MESSAGE", comment: "")

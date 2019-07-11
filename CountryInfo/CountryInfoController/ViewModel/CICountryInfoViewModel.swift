@@ -67,6 +67,9 @@ extension CICountryInfoViewModel {
             }
         }) { (error) in
             self.errorMessage = kNetworkError
+            DispatchQueue.main.async {
+                completion(self)
+            }
         }
     }
 }

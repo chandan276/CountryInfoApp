@@ -33,6 +33,12 @@ class CICountryInfoViewController: UITableViewController {
         
         //Get Data from server
         getCountryData()
+        
+        ConnectionManager.sharedInstance.reachability.whenUnreachable = { [weak self] reachability in
+            if let self = self {
+                self.showOfflineAlert()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +73,7 @@ class CICountryInfoViewController: UITableViewController {
         }
     }
     
-    //MARK: Get Data from Server
+    //MARK: WebService Methods
     func getCountryData() {
         viewModel.getCountryData { [weak self] (countryInfoViewModel) in
             
@@ -78,10 +84,14 @@ class CICountryInfoViewController: UITableViewController {
                     self.viewModel = countryInfoViewModel
                     self.title = self.viewModel.screenTitle
                     self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
                 }
+                self.tableView.refreshControl?.endRefreshing()
             }
         }
+    }
+    
+    func showOfflineAlert() {
+        CIAlertPresenter.showAlertMessage(viewController: self, titleString: "", messageString: kOfflineMessage)
     }
 }
 
