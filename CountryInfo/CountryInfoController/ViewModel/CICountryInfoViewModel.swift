@@ -10,6 +10,7 @@ import Foundation
 
 class CICountryInfoViewModel {
     private var countryDataModel: Response?
+    private(set) var errorMessage: String? = nil
     
     public var screenTitle: String {
         guard let title = countryDataModel?.title else {
@@ -42,6 +43,12 @@ class CICountryInfoViewModel {
         }
         return nil
     }
+    
+    var errorString : String? {
+        get {
+            return errorMessage
+        }
+    }
 }
 
 extension CICountryInfoViewModel {
@@ -56,10 +63,10 @@ extension CICountryInfoViewModel {
                     completion(self)
                 }
             } catch {
-                
+                self.errorMessage = "Something has gone wrong. Please try again later."
             }
         }) { (error) in
-            
+            self.errorMessage = "Something has gone wrong. Please try again later."
         }
     }
 }

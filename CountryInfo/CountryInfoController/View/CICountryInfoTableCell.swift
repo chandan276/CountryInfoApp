@@ -53,9 +53,12 @@ class CountryInfoCell : UITableViewCell {
         addSubview(countryInfoTitleLabel)
         addSubview(countryInfoDescriptionLabel)
         
+        //Set Contraint for each element in the cell
         countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: 70, height: 70, enableInsets: false)
-        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
-        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
+        
+        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
+        
+        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
     }
     
     required init?(coder aDecoder: NSCoder) {

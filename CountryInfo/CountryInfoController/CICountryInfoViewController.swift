@@ -13,16 +13,16 @@ class CICountryInfoViewController: UITableViewController {
     fileprivate let cellId = "countryTableCellId"
     fileprivate var viewModel = CICountryInfoViewModel()
     
+    private let minimumRowHeight: CGFloat = 90.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
         
         self.title = "Country Info"
-        self.tableView.estimatedRowHeight = 100.0
-        self.tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
         
+        setupTableView()
         configureRefreshControl()
         getCountryData()
     }
@@ -45,10 +45,22 @@ class CICountryInfoViewController: UITableViewController {
         tableView.refreshControl = refreshControl
     }
     
+    //MARK: UI setup method
+    func setupTableView()  {
+        self.tableView.estimatedRowHeight = 90.0
+        self.tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
+    }
+    
     //MARK: Get Data from Server
     func getCountryData() {
         viewModel.getCountryData { [weak self] (countryInfoViewModel) in
+            
             if let self = self {
+                if self.viewModel.errorString != nil {
+                    CIAlertPresenter.showAlertMessage(viewController: self, titleString: "", messageString: self.viewModel.errorString ?? "Something has gone wrong. Please try again later.")
+                }
+                
                 self.viewModel = countryInfoViewModel
                 self.title = self.viewModel.screenTitle
                 self.tableView.reloadData()
@@ -72,13 +84,11 @@ extension CICountryInfoViewController {
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        //return UITableView.automaticDimension
+        return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
     }
     
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if tableView.rowHeight < 60.0 {
-//            return 90.0
-//        }
-//        return UITableView.automaticDimension
+//        return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
 //    }
 }
