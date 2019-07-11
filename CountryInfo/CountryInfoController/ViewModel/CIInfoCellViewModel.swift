@@ -17,11 +17,11 @@ class CIInfoCellViewModel {
     }
     
     var title: String {
-        return countryData.title ?? "Title not available"
+        return countryData.title ?? kTitleUnavailableText
     }
     
     var description: String {
-        return countryData.description ?? "Description not available"
+        return countryData.description ?? kDescriptionUnavailableText
     }
     
     var imageUrl: String {

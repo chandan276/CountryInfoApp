@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  CountryInfo
+
+  Created by Chandan Singh on 11/07/19.
+  Copyright © 2019 Organization. All rights reserved.
+*/
+
+// Home Screen String Constants
+"DEFAULT_HOME_PAGE_TITLE" = "Country Info";
+"TITLE_NOT_AVAILABLE" = "Title not available";
+"DESCRIPTION_NOT_AVAILABLE" = "Description not available";
+"PULL_TO_REFRESH_TEXT" = "Fetching Country Data ...";
+
+// Network String Constants
+"NETWORK_ERROR_TEXT" = "Something has gone wrong. Please try again later.";
+"ALERT_OK_TEXT" = "Ok";
+

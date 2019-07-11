@@ -14,7 +14,7 @@ class CountryInfoCell : UITableViewCell {
     public var viewModel: CIInfoCellViewModel? {
         didSet {
             let imageUrl = URL(string: viewModel?.imageUrl ?? "")
-            self.countryInfoImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "PlaceholderImage"), options: SDWebImageOptions.refreshCached) { (image, error, cacheType, url) in
+            self.countryInfoImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: Constants.App.Images.placeholderImage), options: SDWebImageOptions.refreshCached) { (image, error, cacheType, url) in
                 
                 //self.countryInfoImageView.image = image
             }
@@ -32,16 +32,16 @@ class CountryInfoCell : UITableViewCell {
     
     private let countryInfoTitleLabel : UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabel.textColor = Constants.App.Colors.cellTitleColor
+        titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.App.Font.cellTitleFont)
         titleLabel.textAlignment = .left
         return titleLabel
     }()
     
     private let countryInfoDescriptionLabel : UILabel = {
         let desriptionLabel = UILabel()
-        desriptionLabel.textColor = .darkGray
-        desriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        desriptionLabel.textColor = Constants.App.Colors.cellDescriptionColor
+        desriptionLabel.font = UIFont.systemFont(ofSize: Constants.App.Font.cellDescriptionFont)
         desriptionLabel.textAlignment = .left
         desriptionLabel.numberOfLines = 0
         return desriptionLabel

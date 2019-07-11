@@ -13,17 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         window = UIWindow()
-        window?.makeKeyAndVisible()
         
-        //Add the controller programmatically
+        //Add the controller attached with navigationController programmatically
         let rootController = CICountryInfoViewController()
         let navigationController = UINavigationController(rootViewController: rootController)
         window?.rootViewController = navigationController
+        
+        window?.makeKeyAndVisible()
         
         return true
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class CICountryInfoViewController: UITableViewController {
 
-    fileprivate let cellId = "countryTableCellId"
+    fileprivate let cellId = Constants.CellIdentifiers.homeScreenTableCellId
     fileprivate var viewModel = CICountryInfoViewModel()
     
     private let minimumRowHeight: CGFloat = 90.0
@@ -18,7 +18,7 @@ class CICountryInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Country Info"
+        self.title = kDefaultHomePageTitle
         
         //Check the User device type
         if CIUtils.getCurrentDevice() == .iPhone {
@@ -56,7 +56,7 @@ class CICountryInfoViewController: UITableViewController {
     func configureRefreshControl() {
         //Create instance of RefreshControl and add it to UI
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Country Data ...")
+        refreshControl.attributedTitle = NSAttributedString(string: kPullToRefreshText)
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         //Check the device type and add the refresh control to available UI
@@ -93,7 +93,10 @@ extension CICountryInfoViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CountryInfoCell
+        
+        //Pass on the viewModel to cell and it will be taken care there.
         cell.viewModel = viewModel.infoCellViewModel(index: indexPath.row)
+        
         cell.selectionStyle = .none
         return cell
     }

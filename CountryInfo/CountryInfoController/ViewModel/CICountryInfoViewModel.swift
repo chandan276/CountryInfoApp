@@ -14,7 +14,7 @@ class CICountryInfoViewModel {
     
     public var screenTitle: String {
         guard let title = countryDataModel?.title else {
-            return "Country Info"
+            return kDefaultHomePageTitle
         }
         
         return title
@@ -54,7 +54,7 @@ class CICountryInfoViewModel {
 extension CICountryInfoViewModel {
     
     func getCountryData(completion: @escaping (CICountryInfoViewModel) -> ()) {
-        CINetworkHandler.getCountryData("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json", success: { (jsonData) in
+        CINetworkHandler.getCountryData(Constants.WebService.serviceUrl, success: { (jsonData) in
             do {
                 let decoder = JSONDecoder()
                 self.countryDataModel = try decoder.decode(Response.self, from: jsonData as! Data)
@@ -63,10 +63,10 @@ extension CICountryInfoViewModel {
                     completion(self)
                 }
             } catch {
-                self.errorMessage = "Something has gone wrong. Please try again later."
+                self.errorMessage = kNetworkError
             }
         }) { (error) in
-            self.errorMessage = "Something has gone wrong. Please try again later."
+            self.errorMessage = kNetworkError
         }
     }
 }
