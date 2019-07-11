@@ -23,6 +23,7 @@ struct Constants {
         struct Colors {
             static let cellTitleColor = UIColor.black
             static let cellDescriptionColor = UIColor.darkGray
+            static let defaultBackgroundColor = UIColor.white
             static let collectionViewBackgroundColor = UIColor.white
         }
         

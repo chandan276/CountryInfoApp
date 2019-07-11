@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Add the controller attached with navigationController programmatically
         let rootController = CICountryInfoViewController()
-        let navigationController = UINavigationController(rootViewController: rootController)
+        let navigationController = NavigationController(rootViewController: rootController)
         window?.rootViewController = navigationController
         
         window?.makeKeyAndVisible()

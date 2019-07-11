@@ -14,13 +14,18 @@ class CICountryInfoViewController: UIViewController {
     fileprivate var collectionContainerView: CollectionViewContainer?
     fileprivate var viewModel = CICountryInfoViewModel()
     
+    override func loadView() {
+        super.loadView()
+        
+        //Load initial View
+        self.setupView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = kDefaultHomePageTitle
-        
-        //Load initial View
-        self.setupView()
+        self.view.backgroundColor = Constants.App.Colors.defaultBackgroundColor
         
         //Get Data from server
         getCountryData()
@@ -33,9 +38,31 @@ class CICountryInfoViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.tableContainerView?.frame = self.viewFrame
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
+    var viewFrame: CGRect {
+        return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
     
     //MARK: UI setup method
@@ -57,10 +84,11 @@ class CICountryInfoViewController: UIViewController {
             tableContainerView.delegate = self
             self.view.addSubview(tableContainerView)
             
-            tableContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
-            tableContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
-            tableContainerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0.0).isActive = true
-            tableContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+            tableContainerView.translatesAutoresizingMaskIntoConstraints = true
+            view.addConstraint(NSLayoutConstraint(item: tableContainerView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: tableContainerView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: tableContainerView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: tableContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
         }
     }
     
@@ -71,10 +99,11 @@ class CICountryInfoViewController: UIViewController {
             collectionContainerView.delegate = self
             self.view.addSubview(collectionContainerView)
             
-            collectionContainerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
-            collectionContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
-            collectionContainerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0.0).isActive = true
-            collectionContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+            collectionContainerView.translatesAutoresizingMaskIntoConstraints = true
+            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
         }
     }
     

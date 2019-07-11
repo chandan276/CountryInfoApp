@@ -44,6 +44,7 @@ class CollectionViewContainer: UIView {
             collectionView.backgroundColor = Constants.App.Colors.collectionViewBackgroundColor
             self.addSubview(collectionView)
             
+            collectionView.translatesAutoresizingMaskIntoConstraints = false
             collectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0.0).isActive = true
             collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0).isActive = true
             collectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0.0).isActive = true

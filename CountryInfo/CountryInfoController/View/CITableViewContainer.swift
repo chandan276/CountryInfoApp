@@ -29,6 +29,7 @@ class TableViewContainer: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupTableView()
         configureRefreshControl()
     }
@@ -48,6 +49,7 @@ class TableViewContainer: UIView {
             
             self.addSubview(tableView)
             
+            tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0.0).isActive = true
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0).isActive = true
             tableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0.0).isActive = true
