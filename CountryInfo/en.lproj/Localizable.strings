@@ -10,7 +10,7 @@
 "DEFAULT_HOME_PAGE_TITLE" = "Country Info";
 "TITLE_NOT_AVAILABLE" = "Title not available";
 "DESCRIPTION_NOT_AVAILABLE" = "Description not available";
-"PULL_TO_REFRESH_TEXT" = "Fetching Country Data ...";
+"PULL_TO_REFRESH_TEXT" = "Refreshing Content";
 
 // Network String Constants
 "NETWORK_ERROR_TEXT" = "Something has gone wrong. Please try again later.";

@@ -12,7 +12,12 @@ class CINetworkHandler: NSObject {
     
     class func getCountryData(_ strURL: String, success:@escaping (Any) -> Void, failure:@escaping (Error) -> Void) {
         
-        URLSession.shared.dataTask(with: URL(string: strURL)!) { (data, res, err) in
+        guard let url = URL(string: strURL) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, res, err) in
             
             if let d = data {
                 //Returns a String initialized by converting given data into Unicode characters using a ASCII encoding.

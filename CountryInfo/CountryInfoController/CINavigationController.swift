@@ -10,6 +10,8 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
+    //When adding contraints programmatically to viewControllers inside UINavigationController. It is better to handle these methods for better experience:
+    
     override var shouldAutorotate: Bool {
         if let shouldRotate = self.topViewController?.shouldAutorotate {
             return shouldRotate

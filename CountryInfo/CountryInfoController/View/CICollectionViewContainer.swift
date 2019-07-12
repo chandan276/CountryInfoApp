@@ -70,7 +70,7 @@ class CollectionViewContainer: UIView {
     }
 }
 
-extension CollectionViewContainer: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CollectionViewContainer: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.rowsCount ?? 0
     }
