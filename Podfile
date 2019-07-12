@@ -7,7 +7,6 @@ target 'CountryInfo' do
 
   # Pods for CountryInfo
   # Network
-  pod 'Alamofire'
   pod 'ReachabilitySwift'
   # Image Download
   pod 'SDWebImage', '~> 4.0'
