@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class CICountryInfoViewController: UIViewController {
 
@@ -122,6 +123,7 @@ class CICountryInfoViewController: UIViewController {
     
     //MARK: WebService Methods
     func getCountryData() {
+        SVProgressHUD.show()
         viewModel.getCountryData { [weak self] (countryInfoViewModel) in
             
             if let self = self {
@@ -132,6 +134,7 @@ class CICountryInfoViewController: UIViewController {
                     self.title = self.viewModel.screenTitle
                 }
                 self.loadRespectiveViewModel()
+                SVProgressHUD.dismiss()
             }
         }
     }

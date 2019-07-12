@@ -10,6 +10,8 @@ target 'CountryInfo' do
   pod 'ReachabilitySwift'
   # Image Download
   pod 'SDWebImage', '~> 4.0'
+  # Activity Indicator
+  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 
   target 'CountryInfoTests' do
     inherit! :search_paths
