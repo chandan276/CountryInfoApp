@@ -41,7 +41,11 @@ class CICountryInfoViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.tableContainerView?.frame = self.viewFrame
+        if CIUtils.getCurrentDevice() == .iPhone {
+            self.tableContainerView?.frame = self.viewFrame
+        } else {
+            self.collectionContainerView?.frame = self.viewFrame
+        }
     }
     
     override func didReceiveMemoryWarning() {

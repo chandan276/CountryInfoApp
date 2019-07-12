@@ -16,7 +16,6 @@ class TableViewContainer: UIView {
     
     fileprivate var tableView: UITableView?
     fileprivate let cellId = Constants.CellIdentifiers.homeScreenTableCellId
-    private let minimumRowHeight: CGFloat = 90.0
     
     weak var delegate: RefreshDataProtocol? = nil
     
@@ -55,7 +54,7 @@ class TableViewContainer: UIView {
             tableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0.0).isActive = true
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0.0).isActive = true
             
-            tableView.estimatedRowHeight = 90.0
+            tableView.estimatedRowHeight = Constants.App.Dimensions.minimumRowHeight
             tableView.rowHeight = UITableView.automaticDimension
             tableView.register(CountryInfoCell.self, forCellReuseIdentifier: cellId)
         }
@@ -74,13 +73,7 @@ class TableViewContainer: UIView {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: kPullToRefreshText)
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        //Check the device type and add the refresh control to available UI
-        if CIUtils.getCurrentDevice() == .iPhone {
-            self.tableView?.refreshControl = refreshControl
-        } else {
-            
-        }
+        self.tableView?.refreshControl = refreshControl
     }
 }
 
@@ -95,17 +88,12 @@ extension TableViewContainer: UITableViewDataSource, UITableViewDelegate {
         
         //Pass on the viewModel to cell and it will be taken care there.
         cell.viewModel = viewModel!.infoCellViewModel(index: indexPath.row)
-        
+        cell.minHeight = Constants.App.Dimensions.minimumRowHeight
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-        //return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
     }
-    
-    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return (UITableView.automaticDimension > minimumRowHeight) ? UITableView.automaticDimension : minimumRowHeight
-    //    }
 }
