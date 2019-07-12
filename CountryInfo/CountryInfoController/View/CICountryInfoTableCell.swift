@@ -28,6 +28,7 @@ class CountryInfoCell: UITableViewCell {
         let imageView = UIImageView(image: nil)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.roundCorners(cornerRadius: Double(Constants.App.Dimensions.cellImageWidth / 2))
         return imageView
     }()
     

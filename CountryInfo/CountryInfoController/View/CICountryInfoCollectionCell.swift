@@ -26,6 +26,7 @@ class CountryInfoCollectionCell: UICollectionViewCell {
         let imageView = UIImageView(image: nil)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.roundCorners(cornerRadius: Double(Constants.App.Dimensions.cellImageWidth / 2))
         return imageView
     }()
     
@@ -55,7 +56,7 @@ class CountryInfoCollectionCell: UICollectionViewCell {
         addSubview(countryInfoDescriptionLabel)
         
         //Set Contraint for each element in the cell
-        countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
+        countryInfoImageView.anchor(top: topAnchor, left: nil, bottom: countryInfoTitleLabel.topAnchor, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
         countryInfoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         countryInfoTitleLabel.anchor(top: countryInfoImageView.bottomAnchor, left: leftAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - 15, height: 0, enableInsets: false)

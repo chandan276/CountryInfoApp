@@ -44,4 +44,11 @@ extension UIView {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
     }
+    
+    func roundCorners(cornerRadius: Double) {
+        self.layer.cornerRadius = CGFloat(cornerRadius)
+        self.clipsToBounds = true
+        self.layer.borderWidth = Constants.App.Dimensions.cellImageBorderWidth
+        self.layer.borderColor = Constants.App.Colors.cellImageBorderColor.cgColor
+    }
 }

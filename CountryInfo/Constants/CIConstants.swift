@@ -25,6 +25,7 @@ struct Constants {
             static let cellDescriptionColor = UIColor.darkGray
             static let defaultBackgroundColor = UIColor.white
             static let collectionViewBackgroundColor = UIColor.lightGray
+            static let cellImageBorderColor = UIColor.red
         }
         
         // Home Screen Texts Font
@@ -39,6 +40,7 @@ struct Constants {
         }
         
         struct Dimensions {
+            static let cellImageBorderWidth: CGFloat = 1.0
             static let minimumRowHeight: CGFloat = 90.0
             static let cellImageWidth: CGFloat = 70.0
             static let cellImageHeight: CGFloat = 70.0
