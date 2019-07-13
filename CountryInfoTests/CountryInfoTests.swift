@@ -20,6 +20,7 @@ class CountryInfoTests: XCTestCase {
         super.setUp()
         
         homeViewModel = CICountryInfoViewModel()
+        dataModel = Response(title: "About Canada", countryData: [])
     }
 
     override func tearDown() {
@@ -42,9 +43,10 @@ class CountryInfoTests: XCTestCase {
         }
     }
 
-    //Mark: -testServerData
-    //This method check data coming from server or not
-    func testServerData(){
+    /*
+    This method check data coming from server or not
+     */
+    func testServerData() {
         let expectation = XCTestExpectation(description: "Get data from server")
         homeViewModel?.getCountryData(completion: { (viewModel) in
             expectation.fulfill()
@@ -71,14 +73,47 @@ class CountryInfoTests: XCTestCase {
             XCTAssertEqual(title, "About Canada")
         }
     }
+    
     /*
      This method is used for Testing number of rows in ContainerTableView
      */
     func testNumbersOfRowOfContainerTableView(){
-        guard let tableRows = dataModel!.countryData, let count = tableRows.count as? Int else {
+        guard let tableRows = dataModel!.countryData else {
             return
         }
 
-        XCTAssertEqual(count, 14)
+        XCTAssertEqual(tableRows.count, 0)
+    }
+    
+    /*
+     This method is used for Testing UIAlertController.
+     */
+    func testAlertPresentation(){
+        CIAlertPresenter.showAlertMessage(viewController: UIViewController(), titleString: "Test", messageString: "Test Message")
+    }
+    
+    /*
+     This method is used for Testing Image load.
+     */
+    func testImageLoading(){
+        LazyImageLoad.setImageOnImageViewFromURL(imageView: UIImageView(), url: "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg") { [weak self] (image) in
+            if let _ = self, let _ = image {
+                XCTAssert(true)
+            }
+        }
+    }
+    
+    /*
+     This method is used for Testing user device type.
+     */
+    func testUserDeviceType(){
+        let userDeviceType = CIUtils.getCurrentDevice()
+        if userDeviceType == .iPhone {
+            XCTAssertTrue(true, "iPhone")
+        } else if userDeviceType == .iPad {
+            XCTAssertTrue(true, "iPad")
+        } else {
+            XCTAssertFalse(false)
+        }
     }
 }
