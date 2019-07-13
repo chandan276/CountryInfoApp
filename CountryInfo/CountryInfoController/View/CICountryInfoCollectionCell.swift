@@ -40,7 +40,7 @@ class CountryInfoCollectionCell: UICollectionViewCell {
         titleLabel.textColor = Constants.App.Colors.cellTitleColor
         titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.App.Font.cellTitleFont)
         titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = Constants.App.Dimensions.minimumLabelLines
         return titleLabel
     }()
     
@@ -49,7 +49,7 @@ class CountryInfoCollectionCell: UICollectionViewCell {
         desriptionLabel.textColor = Constants.App.Colors.cellDescriptionColor
         desriptionLabel.font = UIFont.systemFont(ofSize: Constants.App.Font.cellDescriptionFont)
         desriptionLabel.textAlignment = .center
-        desriptionLabel.numberOfLines = 0
+        desriptionLabel.numberOfLines = Constants.App.Dimensions.minimumLabelLines
         return desriptionLabel
     }()
     
@@ -65,13 +65,13 @@ class CountryInfoCollectionCell: UICollectionViewCell {
         addSubview(countryInfoDescriptionLabel)
         
         //Set Contraint for each element in the cell
-        countryInfoImageView.anchor(top: topAnchor, left: nil, bottom: countryInfoTitleLabel.topAnchor, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
+        countryInfoImageView.anchor(top: topAnchor, left: nil, bottom: countryInfoTitleLabel.topAnchor, right: nil, paddingTop: Constants.App.Dimensions.mediumConstraint, paddingLeft: Constants.App.Dimensions.lowConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.stickyConstraint, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
         countryInfoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        countryInfoTitleLabel.anchor(top: countryInfoImageView.bottomAnchor, left: leftAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - 15, height: 0, enableInsets: false)
+        countryInfoTitleLabel.anchor(top: countryInfoImageView.bottomAnchor, left: leftAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: Constants.App.Dimensions.lowConstraint, paddingLeft: Constants.App.Dimensions.mediumConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.mediumConstraint, width: self.frame.size.width - Constants.App.Dimensions.highConstraint, height: Constants.App.Dimensions.stickyConstraint, enableInsets: false)
         countryInfoTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - 15, height: 0, enableInsets: false)
+        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: Constants.App.Dimensions.lowConstraint, paddingLeft: Constants.App.Dimensions.mediumConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.mediumConstraint, width: self.frame.size.width - Constants.App.Dimensions.highConstraint, height: Constants.App.Dimensions.stickyConstraint, enableInsets: false)
         countryInfoDescriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     

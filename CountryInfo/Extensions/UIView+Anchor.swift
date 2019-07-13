@@ -39,6 +39,8 @@ extension UIView {
         }
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
+        } else {
+            heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.App.Dimensions.minimumCellLabelHeight).isActive = true
         }
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true

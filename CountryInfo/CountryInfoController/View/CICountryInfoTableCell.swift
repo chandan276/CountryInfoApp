@@ -42,6 +42,7 @@ class CountryInfoCell: UITableViewCell {
         titleLabel.textColor = Constants.App.Colors.cellTitleColor
         titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.App.Font.cellTitleFont)
         titleLabel.textAlignment = .left
+        titleLabel.numberOfLines = Constants.App.Dimensions.minimumLabelLines
         return titleLabel
     }()
     
@@ -50,7 +51,7 @@ class CountryInfoCell: UITableViewCell {
         desriptionLabel.textColor = Constants.App.Colors.cellDescriptionColor
         desriptionLabel.font = UIFont.systemFont(ofSize: Constants.App.Font.cellDescriptionFont)
         desriptionLabel.textAlignment = .left
-        desriptionLabel.numberOfLines = 0
+        desriptionLabel.numberOfLines = Constants.App.Dimensions.minimumLabelLines
         return desriptionLabel
     }()
     
@@ -63,11 +64,11 @@ class CountryInfoCell: UITableViewCell {
         addSubview(countryInfoDescriptionLabel)
         
         //Set Contraint for each element in the cell
-        countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 0, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
+        countryInfoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: Constants.App.Dimensions.mediumConstraint, paddingLeft: Constants.App.Dimensions.lowConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.stickyConstraint, width: Constants.App.Dimensions.cellImageWidth, height: Constants.App.Dimensions.cellImageHeight, enableInsets: false)
         
-        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
+        countryInfoTitleLabel.anchor(top: topAnchor, left: countryInfoImageView.rightAnchor, bottom: countryInfoDescriptionLabel.topAnchor, right: rightAnchor, paddingTop: Constants.App.Dimensions.mediumConstraint, paddingLeft: Constants.App.Dimensions.mediumConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.mediumConstraint, width: self.frame.size.width - countryInfoImageView.frame.size.width - Constants.App.Dimensions.highConstraint, height: Constants.App.Dimensions.stickyConstraint, enableInsets: false)
         
-        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10, width: self.frame.size.width - countryInfoImageView.frame.size.width - 15, height: 0, enableInsets: false)
+        countryInfoDescriptionLabel.anchor(top: countryInfoTitleLabel.bottomAnchor, left: countryInfoImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: Constants.App.Dimensions.lowConstraint, paddingLeft: Constants.App.Dimensions.mediumConstraint, paddingBottom: Constants.App.Dimensions.lowConstraint, paddingRight: Constants.App.Dimensions.mediumConstraint, width: self.frame.size.width - countryInfoImageView.frame.size.width - Constants.App.Dimensions.highConstraint, height: Constants.App.Dimensions.stickyConstraint, enableInsets: false)
     }
     
     //Adopted for miminum Cell height

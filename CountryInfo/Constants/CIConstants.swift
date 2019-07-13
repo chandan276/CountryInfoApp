@@ -48,6 +48,13 @@ struct Constants {
             static let collectionCellHeight = 250
             static let collectionEdgeInset: CGFloat = 5
             static let collectionLineSpacing: CGFloat = 10
+            static let minimumCellLabelHeight: CGFloat = 19.0
+            static let minimumLabelLines = 0
+            
+            static let stickyConstraint: CGFloat = 0.0
+            static let lowConstraint: CGFloat = 5.0
+            static let mediumConstraint: CGFloat = 10.0
+            static let highConstraint: CGFloat = 15.0
         }
     }
     
