@@ -102,18 +102,4 @@ class CountryInfoTests: XCTestCase {
             }
         }
     }
-    
-    /*
-     This method is used for Testing user device type.
-     */
-    func testUserDeviceType(){
-        let userDeviceType = CIUtils.getCurrentDevice()
-        if userDeviceType == .iPhone {
-            XCTAssertTrue(true, "iPhone")
-        } else if userDeviceType == .iPad {
-            XCTAssertTrue(true, "iPad")
-        } else {
-            XCTAssertFalse(false)
-        }
-    }
 }

@@ -24,7 +24,6 @@ struct Constants {
             static let cellTitleColor = UIColor.black
             static let cellDescriptionColor = UIColor.darkGray
             static let defaultBackgroundColor = UIColor.white
-            static let collectionViewBackgroundColor = UIColor.lightGray
             static let cellImageBorderColor = UIColor.red
         }
         
@@ -44,10 +43,6 @@ struct Constants {
             static let minimumRowHeight: CGFloat = 90.0
             static let cellImageWidth: CGFloat = 70.0
             static let cellImageHeight: CGFloat = 70.0
-            static let collectionCellWidth = 200
-            static let collectionCellHeight = 250
-            static let collectionEdgeInset: CGFloat = 5
-            static let collectionLineSpacing: CGFloat = 10
             static let minimumCellLabelHeight: CGFloat = 19.0
             static let minimumLabelLines = 0
             
@@ -61,6 +56,5 @@ struct Constants {
     //Cells used in the App
     struct CellIdentifiers {
         static let homeScreenTableCellId = "countryTableCellId"
-        static let homeScreenCollectionCellId = "countryCollectionCellId"
     }
 }

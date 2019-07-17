@@ -12,14 +12,13 @@ import SVProgressHUD
 class CICountryInfoViewController: UIViewController {
 
     fileprivate var tableContainerView: TableViewContainer?
-    fileprivate var collectionContainerView: CollectionViewContainer?
     fileprivate var viewModel = CICountryInfoViewModel()
     
     override func loadView() {
         super.loadView()
         
         //Load initial View
-        self.setupView()
+        setupTableContainerView()
     }
     
     override func viewDidLoad() {
@@ -47,11 +46,8 @@ class CICountryInfoViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if CIUtils.getCurrentDevice() == .iPhone {
-            self.tableContainerView?.frame = self.viewFrame
-        } else {
-            self.collectionContainerView?.frame = self.viewFrame
-        }
+        //Update the layout when device orientation changes
+        self.tableContainerView?.frame = self.viewFrame
     }
     
     //MARK: Rotation Handler Methods
@@ -72,17 +68,6 @@ class CICountryInfoViewController: UIViewController {
     }
     
     //MARK: UI setup method
-    func setupView() {
-        //Check the User device type
-        if CIUtils.getCurrentDevice() == .iPhone {
-            //Configure TableView for iPhone
-            setupTableContainerView()
-        } else {
-            //Configure CollectionView for iPad
-            setupCollectionContainerView()
-        }
-    }
-    
     func setupTableContainerView() {
         tableContainerView = TableViewContainer(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         
@@ -98,29 +83,6 @@ class CICountryInfoViewController: UIViewController {
         }
     }
     
-    func setupCollectionContainerView() {
-        collectionContainerView = CollectionViewContainer(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        
-        if let collectionContainerView = collectionContainerView {
-            collectionContainerView.delegate = self
-            self.view.addSubview(collectionContainerView)
-            
-            collectionContainerView.translatesAutoresizingMaskIntoConstraints = true
-            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: collectionContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
-        }
-    }
-    
-    func loadRespectiveViewModel() {
-        if CIUtils.getCurrentDevice() == .iPhone {
-            self.tableContainerView?.viewModel = viewModel
-        } else {
-            self.collectionContainerView?.viewModel = viewModel
-        }
-    }
-    
     //MARK: WebService Methods
     func getCountryData() {
         SVProgressHUD.show()
@@ -133,7 +95,7 @@ class CICountryInfoViewController: UIViewController {
                     self.viewModel = countryInfoViewModel
                     self.title = self.viewModel.screenTitle
                 }
-                self.loadRespectiveViewModel()
+                self.tableContainerView?.viewModel = self.viewModel
                 SVProgressHUD.dismiss()
             }
         }
