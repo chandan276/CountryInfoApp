@@ -14,11 +14,7 @@ class LazyImageLoad {
     
     static func setImageOnImageViewFromURL(imageView : UIImageView, url:String?, response:@escaping (_ image : UIImage?) -> Void) {
         
-        guard let urlString = url else {
-            return
-        }
-        
-        guard let pathURL = getURLFromString(url: urlString) else {
+        guard let urlString = url, let pathURL = getURLFromString(url: urlString) else {
             response(nil)
             return
         }
@@ -30,8 +26,7 @@ class LazyImageLoad {
         })
     }
     
-    class func getURLFromString(url : String) -> URL?
-    {
+    class func getURLFromString(url : String) -> URL? {
         let removePercentEncodeURL  = url.removingPercentEncoding
         let urlWithEscapeString = removePercentEncodeURL?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
